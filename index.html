@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue学习</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1>{{msg}}</h1> -->
+    </div>
+    <!-- <div>
+        <div v-html="msg2"></div>
+        <div v-if="true">侠士侠客行</div>
+    </div> -->
+
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        template: `
+        <div>
+            <div v-html="msg2"></div>
+            <div v-if="isShow">侠士侠客行</div>
+            <div v-if="Math.random()>0.5">大于0.5的值</div>
+            <div v-else="isShow">小于0.5的值</div>
+            <div v-show="!isShow">天仙子章艳敏</div>
+            <ul>
+                <li v-for="(item,index) in forLists" :key="index">
+                    <h3>{{index+1}}</h3>
+                    <h4>{{item.name}}</h4>
+                    <h5>{{item.price}}</h5>
+                </li>
+                <li v-for="(value,key) in object" >
+                    <h3>{{key}}---{{value}}</h3>
+                </li>
+
+            </ul>
+        </div>
+        `,
+        data: function() {
+            return {
+                msg: "Vue-test",
+                msg2: `
+                    <h2>Vue_test</h2>
+                `,
+                isShow: true,
+                forLists: [{
+                    id: 1,
+                    name: '苹果',
+                    price: 60
+                }, {
+                    id: 2,
+                    name: '蜜桃',
+                    price: 70
+                }, {
+                    id: 3,
+                    name: '雪梨',
+                    price: 80
+                }, {
+                    id: 3,
+                    name: '雪梨',
+                    price: 80
+                }, ],
+                object: {
+                    name: '张三',
+                    age: 18,
+                    sex: '男'
+                }
+            }
+        }
+    })
+</script>
+
+</html>
