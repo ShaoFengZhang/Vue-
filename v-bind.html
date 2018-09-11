@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-bind的学习</title>
+    <style>
+        .po {
+            color: purple;
+        }
+        
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <p class="po" v-bind:class="active">学习是个长久的活</p>
+            <button>切换按钮颜色</button>
+        </div>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        template: `
+            <div>
+                <p class="po" v-bind:class="{active:isRed}">学习是个长久的活</p>
+                <button v-on:click='changeColor'>切换按钮颜色</button>
+            </div>
+        `,
+        data() {
+            return {
+                isRed: false,
+            }
+        },
+        methods: {
+            changeColor(e) {
+                console.log(this.$el);
+                console.log(e.target);
+                this.isRed = !this.isRed
+            }
+        }
+    })
+</script>
+
+</html>

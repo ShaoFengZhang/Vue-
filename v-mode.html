@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-mode的学习</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-mode='msg'>
+            <p>{{msg}}}</p>
+        </div>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        template: `
+            <div>
+                <input type="text" v-model='msg'>
+                <p>{{msg}}</p>
+            </div>
+        `,
+        data() {
+            return {
+                msg: 'hello,双向绑定'
+            }
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>
