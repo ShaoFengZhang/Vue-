@@ -25,18 +25,10 @@
     })
 
     let VHeader = {
-        template: `<div class='head'>我是VHeader<vbtn></vbtn></div>`,
-        data() {
-            return {
-
-            }
-        }
-    };
-    let App = {
         template: `
-            <div class="main"> 
-                <VHeader></VHeader>
-                <vbtn/>
+            <div class='head'>
+                我是VHeader
+                <button @click='changeFontSize'>字体变化</button>
             </div>
         `,
         data() {
@@ -44,8 +36,33 @@
 
             }
         },
+        methods: {
+            changeFontSize() {
+                this.$emit('change')
+            }
+        },
+
+    };
+
+    // 入口组件
+    let App = {
+        template: `
+            <div class="main" :style='{fontSize:postFontSize+"em"}'> 
+                <VHeader @change='changeHandler'></VHeader>
+            </div>
+        `,
+        data() {
+            return {
+                postFontSize: 1.5
+            }
+        },
+        methods: {
+            changeHandler() {
+                this.postFontSize++;
+            }
+        },
         components: {
-            VHeader
+            VHeader //挂载组件
         }
     };
 
